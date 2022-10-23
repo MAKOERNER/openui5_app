@@ -1,0 +1,78 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
+    <IconTabBar visible="{viewData>/iban}" select="_onNewIbanTab">
+        <items>
+            <IconTabFilter text="Check IBAN" key="iban">
+                <content>
+                    <f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Current Weather" labelSpanXL="3"
+                        labelSpanL="3" labelSpanM="3" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4"
+                        emptySpanM="4" columnsXL="1" columnsL="1" singleContainerFullSize="true">
+                        <f:content>
+                            <Label text="IBAN" />
+                            <Input value="{iban>/iban}" change="_checkIban" />
+                            <Label text="Bank Code" />
+                            <Text text="{iban>/bank_data/bank_code}" />
+                            <Label text="BIC" />
+                            <Text text="{iban>/bank_data/bic}" />
+                            <Label text="City" />
+                            <Text text="{iban>/bank_data/city}" />
+                            <Label text="Name" />
+                            <Text text="{iban>/bank_data/name}" />
+                            <Label text="Zip" />
+                            <Text text="{iban>/bank_data/zip}" />
+                        </f:content>
+
+                    </f:SimpleForm>
+                </content>
+                <items>
+
+                </items>
+            </IconTabFilter>
+            <IconTabFilter
+                text="Get IBAN" key="getIban">
+                <content>
+                    <f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Current Weather" labelSpanXL="3"
+                        labelSpanL="3" labelSpanM="3" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4"
+                        emptySpanM="4" columnsXL="1" columnsL="1" singleContainerFullSize="true">
+                        <f:content>
+                            <c:Title text="Input Account Data"/>
+                            <Label text="Account" />
+                            <Input value="{ibanData>/account}" change="_getIbanCode"/>
+                            <Label text="Bank Code" />
+                            <Input value="{ibanData>/bank_code}" change="_getIbanCode"/>
+                            <Label text="Country"/>
+                            <Select id="countries" showSecondaryValues="true" items="{path: 'countries>/',
+                            sorter: {path: 'alpha2Code'} }" change="_getStructure">
+                                <items>
+                                   <c:ListItem
+                                       additionalText="{countries>name}"
+                                       text="{countries>alpha2Code}"
+                                       key="{countries>alpha2Code}"
+                                   /> 
+                                </items>
+                            </Select>
+                            <c:Title text="Generated IBAN"/>
+                            <Label text="IBAN" />
+                            <Text text="{ibanData>/iban}" />
+                            <Label text="BIC" />
+                            <Text text="{ibanData>/bank_data/bic}" />
+                            <Label text="City" />
+                            <Text text="{ibanData>/bank_data/city}" />
+                            <Label text="Name" />
+                            <Text text="{ibanData>/bank_data/name}" />
+                            <Label text="Zip" />
+                            <Text text="{ibanData>/bank_data/zip}" />
+                            <c:Title text="IBAN-Structure"/>
+                            <Label text="Bank number length" />
+                            <Text text="{ibanStruc>/bankLength}" />
+                            <Label text="Account length" />
+                            <Text text="{ibanStruc>/accLength}" />
+                        </f:content>
+
+                    </f:SimpleForm>
+                </content>
+                <items>
+                </items>
+            </IconTabFilter>
+        </items>
+    </IconTabBar>
+</c:FragmentDefinition>

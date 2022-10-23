@@ -1,0 +1,42 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+>
+<l:VerticalLayout id="containerLayout" width="100%" visible="{viewData>/weather}">
+<l:BlockLayout>
+<l:BlockLayoutRow> 
+<l:BlockLayoutCell width="1">
+    <Image id="icon" height="150px" width="150px"/>
+	</l:BlockLayoutCell>
+    <l:BlockLayoutCell width="3">
+	<f:SimpleForm
+        editable="false"
+			layout="ResponsiveGridLayout"
+			title="Current Weather"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			columnsXL="1"
+			columnsL="1"
+			singleContainerFullSize="true">
+        <f:content>
+        <Label text="Temperature"/>
+        <Text text="{weather>/temperature}°"/>
+        <Label text="Wind Speed"/>
+        <Text text="{weather>/wind_speed}"/>
+        <Label text="Pressure"/>
+        <Text text="{weather>/pressure}"/>    
+        </f:content>
+        
+    </f:SimpleForm>
+	</l:BlockLayoutCell>
+	</l:BlockLayoutRow>
+	</l:BlockLayout>
+</l:VerticalLayout>
+</c:FragmentDefinition>

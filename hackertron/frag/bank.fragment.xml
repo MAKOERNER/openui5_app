@@ -1,0 +1,11 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout">
+<Panel visible="{viewData>/bank}">
+<Label text="Search within km"/>
+<RangeSlider showAdvancedTooltip="true" value2="10" min="0" max="100" width="100%" class="sapUiMediumMarginBottom" />
+<SearchField placeholder="Bankname"/>
+</Panel>
+</c:FragmentDefinition>

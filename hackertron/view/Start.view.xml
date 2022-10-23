@@ -1,0 +1,66 @@
+<mvc:View
+	controllerName="de.mk.hackertron.controller.Start"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+	xmlns:c="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+<Page
+    title="Show usage of API-Layers">
+    <content>
+     	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="ipData"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Location from Ipstack"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			columnsXL="1"
+			columnsL="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="IP-Adress" />
+				<Text text="{startData>/ip}" />
+				<Label text="Region" />
+				<Text text="{startData>/region_code}, {startData>/region_name}" />
+				<Label text="ZIP Code/City" />
+				<Text text="{startData>/zip} {startData>/city}" />
+				<Label text="Country" />
+				<Text id="countryText" text="{startData>/country_code}, {startData>/country_name}" />
+			</f:content>
+		</f:SimpleForm>
+	</VBox>   
+    <Panel expanded="true">
+        <content>
+            <c:Fragment type="XML" fragmentName="de.mk.hackertron.frag.weather"/>
+			<c:Fragment type="XML" fragmentName="de.mk.hackertron.frag.iban"/>
+			<c:Fragment type="XML" fragmentName="de.mk.hackertron.frag.bank"/>
+        </content>
+        <headerToolbar>
+        <OverflowToolbar>
+            <ToolbarSpacer/>
+            <!--Button
+                text="Get Bank Data"
+                press="_getBankData"/-->
+            <Button
+                text="Check / Get IBAN"
+                press="_getIban"/>
+            <Button
+                text="Get Weather Data"
+                press="_getWeather"/>
+                
+        </OverflowToolbar>
+        </headerToolbar>
+    </Panel>
+    </content>
+</Page>
+</mvc:View>
